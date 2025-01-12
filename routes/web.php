@@ -7,12 +7,20 @@ use App\Http\Controllers\SellerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('pages/Home');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard',[]);
 });
+
+Route::get('/shop' , function(){
+    return view('pages/product');
+})->name('shop');
+
+Route::get('/productall' , function(){
+    return view('pages/productall');
+})->name('products.all');
 
 Route::prefix('auth')->group(function () {
     Route::get('/', [AuthController::class, 'defaultAuth']);    
