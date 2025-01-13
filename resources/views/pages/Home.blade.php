@@ -1,146 +1,91 @@
 <!-- resources/views/home.blade.php -->
 @extends('layouts.app')
 
-@section('content')
+@section('main')
     <!-- Intro Section -->
-    <section id="collection-products" class="py-2 my-2 py-md-5 my-md-5">
-        <div class="container-md">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 mb-4">
-            <div class="collection-card card border-0 d-flex flex-row align-items-end jarallax-keep-img">
-                <img src="images/collection-item1.jpg" alt="product-item" class="border-rounded-10 img-fluid jarallax-img">
-                <div class="card-detail p-3 m-3 p-lg-5 m-lg-5">
-                <h3 class="card-title display-3">
-                    <a href="#">Minimal Collection</a>
-                </h3>
-                <a href="index.html" class="text-uppercase mt-3 d-inline-block text-hover fw-bold">Shop Now</a>
+    <section id="collection-products" class="py-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="relative group">
+                    <img src="images/collection-item1.jpg" alt="product-item" class="rounded-lg w-full object-cover">
+                    <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black via-transparent p-6 rounded-lg text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <h3 class="text-3xl font-bold">
+                            <a href="#" class="hover:underline">Minimal Collection</a>
+                        </h3>
+                        <a href="index.html" class="mt-3 inline-block uppercase font-bold text-yellow-400 hover:text-yellow-500">Shop Now</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <img src="images/collection-item2.jpg" alt="product-item" class="rounded-lg w-full object-cover">
+                    <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black via-transparent p-6 rounded-lg text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <h3 class="text-3xl font-bold">
+                            <a href="#" class="hover:underline">Sneakers Collection</a>
+                        </h3>
+                        <a href="index.html" class="mt-3 inline-block uppercase font-bold text-yellow-400 hover:text-yellow-500">Shop Now</a>
+                    </div>
                 </div>
             </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-            <div class="collection-card card border-0 d-flex flex-row jarallax-keep-img">
-                <img src="images/collection-item2.jpg" alt="product-item" class="border-rounded-10 img-fluid jarallax-img">
-                <div class="card-detail p-3 m-3 p-lg-5 m-lg-5">
-                <h3 class="card-title display-3">
-                    <a href="#">Sneakers Collection</a>
-                </h3>
-                <a href="index.html" class="text-uppercase mt-3 d-inline-block text-hover fw-bold">Shop Now</a>
-                </div>
-            </div>
-            </div>
         </div>
-        </div>
-    </section>
     </section>
 
     <!-- Discount Section -->
-    <section class="discount-coupon py-2 my-2 py-md-5 my-md-5">
-        <div class="container">
-            <div class="bg-gray coupon position-relative p-5">
-                <div class="bold-text position-absolute">10% OFF</div>
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-lg-7 col-md-12 mb-3">
-                        <div class="coupon-header">
-                            <h2 class="display-7">10% OFF Discount Coupons</h2>
-                            <p class="m-0">Subscribe us to get 10% OFF on all the purchases</p>
-                        </div>
+    <section class="py-6 bg-gray-100">
+        <div class="container mx-auto">
+            <div class="bg-white p-8 rounded-lg shadow-md relative">
+                <div class="absolute top-0 left-0 text-5xl font-bold text-gray-300 opacity-10">10% OFF</div>
+                <div class="flex flex-col lg:flex-row justify-between items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold">10% OFF Discount Coupons</h2>
+                        <p class="mt-2 text-gray-600">Subscribe to get 10% OFF on all purchases</p>
                     </div>
-                    <div class="col-lg-3 col-md-12">
-                        <div class="btn-wrap">
-                            <a href="#" class="btn btn-black btn-medium text-uppercase hvr-sweep-to-right">Email me</a>
-                        </div>
-                    </div>
+                    <a href="#" class="mt-4 lg:mt-0 bg-black text-white py-3 px-6 rounded-lg uppercase font-bold hover:bg-gray-800">Email me</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Products Section -->
-    <section id="featured-products" class="product-store">
-        <div class="container-md">
-            <div class="display-header d-flex align-items-center justify-content-between">
-                <h2 class="section-title text-uppercase">Featured Products</h2>
-                <div class="btn-right">
-                    <a href="{{ route('products.all') }}" class="d-inline-block text-uppercase text-hover fw-bold">View all</a>
-                </div>
+    <section id="featured-products" class="py-6">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold uppercase">Featured Products</h2>
+                <a href="{{ route('products.all') }}" class="uppercase font-bold text-blue-500 hover:underline">View all</a>
             </div>
-            <div class="product-content padding-small">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
-                    @foreach ($featuredProducts as $product)
-                        <div class="col mb-4">
-                            <div class="product-card position-relative">
-                                <div class="card-img">
-                                    <img src="{{ asset($product['image']) }}" alt="{{ $product['name'] }}" class="product-image img-fluid">
-                                    <div class="cart-concern position-absolute d-flex justify-content-center">
-                                        <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-                                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modallong">
-                                                <svg class="shopping-carriage">
-                                                    <use xlink:href="#shopping-carriage"></use>
-                                                </svg>
-                                            </button>
-                                            <button type="button" class="btn btn-light" data-bs-target="#modaltoggle" data-bs-toggle="modal">
-                                                <svg class="quick-view">
-                                                    <use xlink:href="#quick-view"></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-detail d-flex justify-content-between align-items-center mt-3">
-                                    <h3 class="card-title fs-6 fw-normal m-0">
-                                        <a href="{{ route('product.details', $product['id']) }}">{{ $product['name'] }}</a>
-                                    </h3>
-                                    <span class="card-price fw-bold">${{ $product['price'] }}</span>
-                                </div>
-                            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                @foreach ($featuredProducts as $product)
+                    <div class="border rounded-lg p-4 shadow-md hover:shadow-lg">
+                        <img src="{{ asset($product['image']) }}" alt="{{ $product['name'] }}" class="rounded-lg w-full h-48 object-cover">
+                        <div class="flex justify-between items-center mt-3">
+                            <h3 class="text-sm font-medium">
+                                <a href="{{ route('product.details', $product['id']) }}" class="hover:underline">{{ $product['name'] }}</a>
+                            </h3>
+                            <span class="font-bold text-lg">${{ $product['price'] }}</span>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
 
     <!-- Latest Products Section -->
-    <section id="latest-products" class="product-store py-2 my-2 py-md-5 my-md-5 pt-0">
-        <div class="container-md">
-            <div class="display-header d-flex align-items-center justify-content-between">
-                <h2 class="section-title text-uppercase">Latest Products</h2>
-                <div class="btn-right">
-                    <a href="{{ route('products.all') }}" class="d-inline-block text-uppercase text-hover fw-bold">View all</a>
-                </div>
+    <section id="latest-products" class="py-6">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold uppercase">Latest Products</h2>
+                <a href="{{ route('products.all') }}" class="uppercase font-bold text-blue-500 hover:underline">View all</a>
             </div>
-            <div class="product-content padding-small">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
-                    @foreach ($latestProducts as $product)
-                        <div class="col mb-4">
-                            <div class="product-card position-relative">
-                                <div class="card-img">
-                                    <img src="{{ asset($product['image']) }}" alt="{{ $product['name'] }}" class="product-image img-fluid">
-                                    <div class="cart-concern position-absolute d-flex justify-content-center">
-                                        <div class="cart-button d-flex gap-2 justify-content-center align-items-center">
-                                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modallong">
-                                                <svg class="shopping-carriage">
-                                                    <use xlink:href="#shopping-carriage"></use>
-                                                </svg>
-                                            </button>
-                                            <button type="button" class="btn btn-light" data-bs-target="#modaltoggle" data-bs-toggle="modal">
-                                                <svg class="quick-view">
-                                                    <use xlink:href="#quick-view"></use>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-detail d-flex justify-content-between align-items-center mt-3">
-                                    <h3 class="card-title fs-6 fw-normal m-0">
-                                        <a href="{{ route('product.details', $product['id']) }}">{{ $product['name'] }}</a>
-                                    </h3>
-                                    <span class="card-price fw-bold">${{ $product['price'] }}</span>
-                                </div>
-                            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                @foreach ($latestProducts as $product)
+                    <div class="border rounded-lg p-4 shadow-md hover:shadow-lg">
+                        <img src="{{ asset($product['image']) }}" alt="{{ $product['name'] }}" class="rounded-lg w-full h-48 object-cover">
+                        <div class="flex justify-between items-center mt-3">
+                            <h3 class="text-sm font-medium">
+                                <a href="{{ route('product.details', $product['id']) }}" class="hover:underline">{{ $product['name'] }}</a>
+                            </h3>
+                            <span class="font-bold text-lg">${{ $product['price'] }}</span>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
